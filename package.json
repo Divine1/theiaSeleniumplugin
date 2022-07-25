@@ -1,0 +1,53 @@
+{
+	"name": "harmony-assist",
+	"description": "Harmony Assist Plugin",
+	"version": "0.0.1",
+	"publisher": "harmony",
+	"private": true,
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Microsoft/vscode-extension-samples"
+	},
+	"engines": {
+		"vscode": "^1.47.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:harmonyAssist.open",
+		"onCommand:harmonyAssist.doRefactor",
+		"onWebviewPanel:harmonyAssist",
+		"onCommand:harmonyAssist.openTerminal",
+		"onCommand:harmonyAssist.createTerminal"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "harmonyAssist.open",
+				"title": "Open Harmony Assist plugin",
+				"category": "Harmony Assist"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint . --ext .ts,.tsx",
+		"watch": "tsc -w -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.47.0",
+		"@types/vscode-webview": "^1.57.0",
+		"@typescript-eslint/eslint-plugin": "^5.30.0",
+		"@typescript-eslint/parser": "^5.30.0",
+		"eslint": "^8.13.0",
+		"typescript": "^4.7.2"
+	},
+	"dependencies": {
+		"ovsx": "^0.5.1"
+	}
+}
