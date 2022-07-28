@@ -167,11 +167,11 @@ class CatCodingPanel {
 					case 'alert':
 						vscode.window.showErrorMessage(message.text);
 						break;
-					/*
+					
 					case 'localdb':
 						fs.writeFileSync(this.file_vscode_harmonystate,message.text);
 						break;
-					*/
+					
 					case 'vscodecommand':
 						//manipulateTerminal();
 						manipulateTerminal((terminal)=>{
@@ -218,11 +218,11 @@ class CatCodingPanel {
 		// Vary the webview's content based on where it is located in the editor.
 		switch (this._panel.viewColumn) {
 			case vscode.ViewColumn.Two:
-				this._updateForCat(webview, 'Compiling Cat');
+				//this._updateForCat(webview, 'Compiling Cat');
 				return;
 
 			case vscode.ViewColumn.Three:
-				this._updateForCat(webview, 'Testing Cat');
+				//this._updateForCat(webview, 'Testing Cat');
 				return;
 
 			case vscode.ViewColumn.One:
@@ -239,34 +239,33 @@ class CatCodingPanel {
 
 	private _getHtmlForWebview(webview: vscode.Webview, catGifPath: string) {
 		console.log("in _getHtmlForWebview");
-		/*
-			if(fs.existsSync(this.file_vscode_harmonystate)){
-				console.log("file_vscode_harmonystate exists");
-				const fileData = fs.readFileSync(this.file_vscode_harmonystate);
-				console.log("fileData ",fileData);
+			setTimeout(()=>{
+				if(fs.existsSync(this.file_vscode_harmonystate)){
+					console.log("file_vscode_harmonystate exists");
+					const fileData = fs.readFileSync(this.file_vscode_harmonystate);
+					console.log("fileData ",fileData);
 
-				if(fileData && fileData.length >0){
-					console.log("fileData exists");
-					this._panel.webview.postMessage({
-						message:"localdb",
-						text: fileData.toString()
-					});
+					if(fileData && fileData.length >0){
+						console.log("fileData exists");
+						this._panel.webview.postMessage({
+							message:"localdb",
+							text: fileData.toString()
+						});
+					}
+					else{
+						console.log("fileData doesnot exists");
+						this._panel.webview.postMessage({
+							message:"localdbEmpty",
+							text: ""
+						});
+					}	
 				}
 				else{
-					console.log("fileData doesnot exists");
-					this._panel.webview.postMessage({
-						message:"localdbEmpty",
-						text: ""
-					});
+					console.log("file_vscode_harmonystate doesnot exists");
+					//fs.writeFileSync(this.file_vscode_harmonystate,"{}");
 				}
-				
-			}
-			else{
-				console.log("file_vscode_harmonystate doesnot exists");
-				fs.writeFileSync(this.file_vscode_harmonystate,"{}");
-				
-			}
-		*/
+			},500);
+		
 		// Local path to main script run in the webview
 		const scriptPathOnDisk = vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js');
 

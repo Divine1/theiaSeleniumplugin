@@ -99,17 +99,18 @@ let htmlelements = {
 
   
 
-  // receive data from vscode core  start
-  setDefaultValues()
-  /*
+  // receive data from vscode core-filestate  start
+  //setDefaultValues()
+  
   window.addEventListener("message",(event)=>{
-    console.log("window event message ",event.data);
+    console.log("webview: window event message ",event.data);
     if(event.data){
+      
       if(event.data.message== "localdb"){
         let textJSON = JSON.parse(event.data.text);
         console.log(" textJSON ",textJSON)
         for(let key in textJSON){
-          console.log("106 key ",key)
+         // console.log("106 key ",key)
           setState(key,textJSON[key]);
           document.getElementById(key).value=textJSON[key];
         }
@@ -121,10 +122,11 @@ let htmlelements = {
       else{
         
       }
+      
     }
   });
-  */
-  // receive data from vscode core  end
+  
+  // receive data from vscode core-filestate  end
 
 
 
@@ -136,10 +138,10 @@ let htmlelements = {
   //maven listeners start
   registerEventListener("input",htmlelements.mvn.application,function(){
     setState(htmlelements.mvn.application,this.value);
-    // vscode.postMessage({
-    //   command : "localdb",
-    //   text : JSON.stringify(getState())
-    // })
+    vscode.postMessage({
+      command : "localdb",
+      text : JSON.stringify(getState())
+    })
   });
   
   registerEventListener("click",htmlelements.mvn.execute,()=>{
@@ -163,10 +165,10 @@ let htmlelements = {
     registerEventListener("input",elementId,function(){
       setState(elementId,this.value);
       console.log(" getState() ",getState())
-      // vscode.postMessage({
-      //   command : "localdb",
-      //   text : JSON.stringify(getState())
-      // })
+      vscode.postMessage({
+        command : "localdb",
+        text : JSON.stringify(getState())
+      })
 
     })
   })
@@ -188,10 +190,10 @@ let htmlelements = {
     javaRunParams =`xvfb-run -a java -jar target/cbf${appname}.jar -cp target/dependency-jars/ ${javaRunParams}`
     //javaRunParams =`java -jar target/cbf${appname}.jar -cp target/dependency-jars/ ${javaRunParams}`
     console.log("javaRunParams ",javaRunParams);
-    vscode.postMessage({
-      command : "vscodecommand",
-      text : javaRunParams
-    })
+    // vscode.postMessage({
+    //   command : "vscodecommand",
+    //   text : javaRunParams
+    // })
 
   })
   
