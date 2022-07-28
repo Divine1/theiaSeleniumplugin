@@ -83,3 +83,9 @@ https://open-vsx.org/extension/harmony/harmony-assist
 https://eclipse-che.github.io/che-plugin-registry/main/v3/plugins/
 
 http://sc2-10-186-67-195.eng.vmware.com:8080/che-plugin-registry/main/v3/plugins/
+
+
+
+
+
+use `vsce package` to create `harmony-assist-0.0.2.vsix` package locally

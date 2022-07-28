@@ -1,7 +1,7 @@
 {
 	"name": "harmony-assist",
 	"description": "Harmony Assist Plugin",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"publisher": "harmony",
 	"private": true,
 	"license": "MIT",
