@@ -190,10 +190,10 @@ let htmlelements = {
     javaRunParams =`xvfb-run -a java -jar target/cbf${appname}.jar -cp target/dependency-jars/ ${javaRunParams}`
     //javaRunParams =`java -jar target/cbf${appname}.jar -cp target/dependency-jars/ ${javaRunParams}`
     console.log("javaRunParams ",javaRunParams);
-    // vscode.postMessage({
-    //   command : "vscodecommand",
-    //   text : javaRunParams
-    // })
+    vscode.postMessage({
+      command : "vscodecommand",
+      text : javaRunParams
+    })
 
   })
   
